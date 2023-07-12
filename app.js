@@ -80,7 +80,7 @@ io.on("connection", (socket) => {
   socket.on("join", (room) => {
     socket.join(room);
     const player = new Player({ name: playerName, id: socket.id });
-    if (!games.has(room)) games.set(room, new Roll5({ players: [ player ] }));
+    if (!games.has(room)) games.set(room, new Roll5({ players: [ player ], id: room }));
     else games.get(room).players.push(player);
     players.set(socket.id, games.get(room));
     io.to(room).emit("gameUpdate", games.get(room));
@@ -91,7 +91,7 @@ io.on("connection", (socket) => {
     const game = players.get(socket.id);
     if (game.currentPlayer == socket.id) {
       game.roll();
-      io.to(room).emit("gameUpdate", game);
+      io.to(game.id).emit("gameUpdate", game);
     }
   });
 
@@ -100,7 +100,7 @@ io.on("connection", (socket) => {
     const game = players.get(socket.id);
     if (game.currentPlayer == socket.id) {
       game.dice[die].toggle();
-      io.to(room).emit("gameUpdate", game);
+      io.to(game.id).emit("gameUpdate", game);
     }
   });
 
@@ -109,14 +109,14 @@ io.on("connection", (socket) => {
     const game = players.get(socket.id);
     if (game.currentPlayer == socket.id) {
       game.score(box);
-      io.to(room).emit("gameUpdate", game);
+      io.to(game.id).emit("gameUpdate", game);
     }
   });
 
   // Player Leave
   socket.on("disconnecting", () => {
     players.delete(socket.id);
-    if (players.size == 0) playerCount == 0;
+    if (players.size == 0) playerCount = 0;
     for (const room of socket.rooms) {
       if (games.has(room)) {
         const game = games.get(room);
