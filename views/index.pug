@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1 Definitely Not Flink
+  h2: span#playerName &nbsp;
+  .pure-g
+    #d0.d.pure-u-1-5
+    #d1.d.pure-u-1-5
+    #d2.d.pure-u-1-5
+    #d3.d.pure-u-1-5
+    #d4.d.pure-u-1-5
+
+  button#roll.pure-button.pure-button-primary.pure-button-disabled Roll! (#[span(id="rollsRemaining") 3] remain)
+
+  table#scoreTable.pure-table.pure-table-striped
+    thead: tr: th #
+    tbody
+      tr: th 1s
+      tr: th 2s
+      tr: th 3s
+      tr: th 4s
+      tr: th 5s
+      tr: th 6s
+      tr: th Subtotal
+      tr: th Bonus
+      tr: th 3K
+      tr: th 4K
+      tr: th FH
+      tr: th SS
+      tr: th LS
+      tr: th 5K
+      tr: th Bonus 5K
+      tr: th Chance
+      tr: th Subtotal
+      tr: th Total

@@ -1,0 +1,28 @@
+/*
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+*/
+.d {
+  border-radius: 4px;
+  height: 64px;
+  width: 64px;
+  background-image: url(../images/d0.svg);
+  background-color: #95D8EB;
+  background-color: #0076BE;
+  margin: 16px;
+}
+.d1 { background-image: url(../images/d1.svg); }
+.d2 { background-image: url(../images/d2.svg); }
+.d3 { background-image: url(../images/d3.svg); }
+.d4 { background-image: url(../images/d4.svg); }
+.d5 { background-image: url(../images/d5.svg); }
+.d6 { background-image: url(../images/d6.svg); }
+.locked { background-color: #48BF91; }
+
+td { text-align: center; }
