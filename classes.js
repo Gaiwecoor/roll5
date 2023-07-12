@@ -163,6 +163,7 @@ class Roll5 {
     this.currentPlayer = data?.currentPlayer || this.players[0]?.id || null;
     this.dice = new DiceSet(data?.dice);
     this.rolls = data?.rolls || 1;
+    this.id = data?.id || nanoid();
   }
 
   roll() {
