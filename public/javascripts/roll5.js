@@ -164,9 +164,11 @@ $(document).ready(() => {
       "</tbody>"
     );
 
+    $("#currentPlayer").html(players.find(({ id }) => id == game.currentPlayer).name);
+
     if (game.currentPlayer == myId) {
       $(".score").on("click", ({ target }) => {
-        socket.emit("score", room, $(target)[0].dataset.box);
+        socket.emit("score", $(target)[0].dataset.box);
       });
     }
   });
@@ -182,11 +184,11 @@ $(document).ready(() => {
   $(".d").on("click", ({ target }) => {
     if ((gameState.currentPlayer != myId) || (gameState.rolls == 0)) return;
     const dieId = parseInt($(target)[0].id[1], 10);
-    socket.emit("toggleDie", room, dieId);
+    socket.emit("toggleDie", dieId);
   });
 
   $("#roll").on("click", () => {
     if ((gameState.currentPlayer != myId) || (gameState.rolls == 3)) return;
-    socket.emit("roll", room);
+    socket.emit("roll");
   });
 });
