@@ -69,6 +69,7 @@ server.listen(PORT);
 const { Player, Roll5 } = require("./classes");
 
 const games = new Map();
+const players = new Map();
 let playerCount = 0;
 
 io.on("connection", (socket) => {
@@ -81,29 +82,22 @@ io.on("connection", (socket) => {
     const player = new Player({ name: playerName, id: socket.id });
     if (!games.has(room)) games.set(room, new Roll5({ players: [ player ] }));
     else games.get(room).players.push(player);
+    players.set(socket.id, games.get(room));
     io.to(room).emit("gameUpdate", games.get(room));
   });
 
   // Player Roll
-  socket.on("roll", (room) => {
-    const game = games.get(room);
-    if (!game) {
-      io.to(socket.id).emit("error", new Error("Room does not exist"));
-      return;
+  socket.on("roll", () => {
+    const game = players.get(socket.id);
+    if (game.currentPlayer == socket.id) {
+      game.roll();
+      io.to(room).emit("gameUpdate", game);
     }
-
-    if (game.currentPlayer == socket.id) game.roll();
-    io.to(room).emit("gameUpdate", game);
   });
 
   // Lock/Unlock Die
-  socket.on("toggleDie", (room, die) => {
-    const game = games.get(room);
-    if (!game) {
-      io.to(socket.id).emit("error", new Error("Room does not exist"));
-      return;
-    }
-
+  socket.on("toggleDie", (die) => {
+    const game = players.get(socket.id);
     if (game.currentPlayer == socket.id) {
       game.dice[die].toggle();
       io.to(room).emit("gameUpdate", game);
@@ -111,13 +105,8 @@ io.on("connection", (socket) => {
   });
 
   // Score
-  socket.on("score", (room, box) => {
-    const game = games.get(room);
-    if (!game) {
-      io.to(socket.id).emit("error", new Error("Room does not exist"));
-      return;
-    }
-
+  socket.on("score", (box) => {
+    const game = players.get(socket.id);
     if (game.currentPlayer == socket.id) {
       game.score(box);
       io.to(room).emit("gameUpdate", game);
@@ -126,6 +115,8 @@ io.on("connection", (socket) => {
 
   // Player Leave
   socket.on("disconnecting", () => {
+    players.delete(socket.id);
+    if (players.size == 0) playerCount == 0;
     for (const room of socket.rooms) {
       if (games.has(room)) {
         const game = games.get(room);
