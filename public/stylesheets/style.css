@@ -9,9 +9,10 @@ a {
 }
 */
 .d {
-  border-radius: 4px;
-  height: 64px;
-  width: 64px;
+  border-radius: 6px;
+  height: 96px;
+  width: 96px;
+  background-size: cover;
   background-image: url(../images/d0.svg);
   background-color: #95D8EB;
   background-color: #0076BE;
@@ -24,5 +25,10 @@ a {
 .d5 { background-image: url(../images/d5.svg); }
 .d6 { background-image: url(../images/d6.svg); }
 .locked { background-color: #48BF91; }
+
+button#roll { background-color: #0076BE; color: white; }
+button.score { background-color: #48BF91; }
+
+.centered { width: 100%; align-content: center; text-align: center; margin: 32px; max-width: 640px; }
 
 td { text-align: center; }
