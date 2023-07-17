@@ -83,6 +83,7 @@ io.on("connection", (socket) => {
     if (!games.has(room)) games.set(room, new Roll5({ players: [ player ], id: room }));
     else games.get(room).players.push(player);
     players.set(socket.id, games.get(room));
+    if (!games.get(room)?.currentPlayer) games.get(room).currentPlayer = socket.id;
     io.to(room).emit("gameUpdate", games.get(room));
   });
 
