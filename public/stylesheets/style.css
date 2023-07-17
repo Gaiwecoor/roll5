@@ -26,8 +26,9 @@ a {
 .d6 { background-image: url(../images/d6.svg); }
 .locked { background-color: #48BF91; }
 
-button#roll { background-color: #0076BE; color: white; }
-button.score { background-color: #48BF91; }
+button#roll, button#reset { background-color: #0076BE; color: white; }
+button.score, button#verify { background-color: #48BF91; }
+button.smaller { font-size: 80%; }
 
 .centered { width: 100%; align-content: center; text-align: center; margin: 32px; max-width: 640px; }
 

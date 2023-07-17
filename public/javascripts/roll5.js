@@ -120,8 +120,8 @@ function button({ id, key }) {
   return `<button class="pure-button pure-button-primary score" data-box="${key}">${gameState.dice.values[key]}</button>`;
 }
 
+const socket = io();
 $(document).ready(() => {
-  const socket = io();
   const room = "default";
 
   /***********************
@@ -130,7 +130,6 @@ $(document).ready(() => {
 
   socket.on("ready", (player) => {
     myId = player.id;
-    $("#playerName").html(player.name);
     socket.emit("join", room);
   });
 
@@ -140,6 +139,7 @@ $(document).ready(() => {
       player.score = new Score(player.score);
     }
     gameState = game;
+
     // Display Dice
     for (let i = 0; i < 5; i++) {
       $(`#d${i}`).removeClass(["d1", "d2", "d3", "d4", "d5", "d6", "locked"]);
@@ -171,6 +171,8 @@ $(document).ready(() => {
         socket.emit("score", $(target)[0].dataset.box);
       });
     }
+
+    $("#playerName").val(game.players.find(({ id }) => id == myId).name);
   });
 
   socket.on("error", error => {
@@ -187,8 +189,21 @@ $(document).ready(() => {
     socket.emit("toggleDie", dieId);
   });
 
+  $("#setName").on("click", () => {
+    socket.emit("setName", $("#playerName").val());
+  });
+
   $("#roll").on("click", () => {
     if ((gameState.currentPlayer != myId) || (gameState.rolls == 3)) return;
     socket.emit("roll");
+  });
+
+  $("#verify").on("click", () => {
+    console.log("Verifying State...");
+    socket.emit("verifyState");
+  });
+
+  $("#reset").on("click", () => {
+    socket.emit("restart");
   });
 });

@@ -121,6 +121,11 @@ class Player {
     return Boxes.reduce((a, box) => a + (this.score[box] === null ? 1 : 0), 0);
   }
 
+  reset() {
+    this.score = new Score();
+    return this;
+  }
+
   tally(box, dice) {
     box = box.toLowerCase();
     checkBoxValue(box);

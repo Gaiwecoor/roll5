@@ -83,7 +83,7 @@ io.on("connection", (socket) => {
     if (!games.has(room)) games.set(room, new Roll5({ players: [ player ], id: room }));
     else games.get(room).players.push(player);
     players.set(socket.id, games.get(room));
-    if (!games.get(room)?.currentPlayer) games.get(room).currentPlayer = socket.id;
+    if (!games.get(room).currentPlayer) games.get(room).currentPlayer = socket.id;
     io.to(room).emit("gameUpdate", games.get(room));
   });
 
@@ -103,6 +103,30 @@ io.on("connection", (socket) => {
       game.dice[die].toggle();
       io.to(game.id).emit("gameUpdate", game);
     }
+  });
+
+  // Verify Game State
+  socket.on("verifyState", () => {
+    const game = players.get(socket.id);
+    io.to(game.id).emit("gameUpdate", game);
+  });
+
+  // Restart Player Game
+  socket.on("restart", () => {
+    const game = players.get(socket.id);
+    const player = game.players.find(({ id }) => id == socket.id);
+    player?.reset();
+    if (!game.currentPlayer) game.currentPlayer == socket.id;
+    io.to(game.id).emit("gameUpdate", game);
+  });
+
+  // Player Name Set
+  socket.on("setName", (name) => {
+    if (!name.trim()) return;
+    const game = players.get(socket.id);
+    const player = game.players.find(({ id }) => id == socket.id);
+    player.name = name.trim();
+    io.to(game.id).emit("gameUpdate", game);
   });
 
   // Score

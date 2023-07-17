@@ -2,7 +2,9 @@ extends layout
 
 block content
   h1 Definitely Not Flink
-  h2: span#playerName &nbsp;
+  form.pure-form(onsubmit="event.preventDefault();")
+    input(type="text")#playerName.pure-input-1-5
+    button#setName.pure-button Edit
   h3 <span id="currentPlayer">Someone</span> is rolling...
 
   .pure-g.centered
@@ -37,3 +39,7 @@ block content
         tr: th Chance
         tr: th Subtotal
         tr: th Total
+
+  section.centered
+    button.pure-button.pure-button-primary#verify Verify State
+    button.pure-button.pure-button-primary#reset Start New Game
