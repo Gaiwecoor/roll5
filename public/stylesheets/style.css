@@ -33,7 +33,7 @@ button.smaller { font-size: 80%; }
 .centered { width: 100%; align-content: center; text-align: center; margin: 32px; max-width: 640px; }
 
 td { text-align: center; }
-td.sub1 { border-top: 1px solid black; }
-td.bonus { border-bottom: 2px solid black; }
-td.sub2 { border-top: 1px solid black; }
-td.total { border-top: 3px double black; }
+tr.sub1 { border-top: 1px solid black; }
+tr.bonus { border-bottom: 2px solid black; }
+tr.sub2 { border-top: 1px solid black; }
+tr.total { border-top: 3px double black; }
