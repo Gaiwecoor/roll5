@@ -167,7 +167,8 @@ $(document).ready(() => {
     if (game.currentPlayer) {
       $("#turnState").html(players.find(({ id }) => id == game.currentPlayer).name + " is rolling:");
     } else {
-      $("#turnState").html(players.sort((a, b) => b.score.total - a.score.total)[0].name + " wins!");
+      let winner = players.sort((a, b) => b.score.total - a.score.total)[0];
+      $("#turnState").html(`${winner.name} wins with ${winner.score.total} points!`);
     }
 
     if (game.currentPlayer == myId) {
