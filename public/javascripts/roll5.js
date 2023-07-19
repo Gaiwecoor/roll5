@@ -160,7 +160,7 @@ $(document).ready(() => {
     $("#scoreTable").empty().append(
       `<thead><tr><th></th>${players.map(({ name }) => `<th>${name}</th>`)}</tr></thead>` +
       "<tbody>" +
-      Object.entries(labels).map(([ key, label ]) => `<tr><th>${label}</th>${players.map(({ id, score }) => `<td>${score[key] ?? button({ id, key })}</td>`)}</tr>`) +
+      Object.entries(labels).map(([ key, label ]) => `<tr class="${key}"><th>${label}</th>${players.map(({ id, score }) => `<td>${score[key] ?? button({ id, key })}</td>`)}</tr>`) +
       "</tbody>"
     );
 
