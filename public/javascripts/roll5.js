@@ -164,7 +164,11 @@ $(document).ready(() => {
       "</tbody>"
     );
 
-    $("#currentPlayer").html(players.find(({ id }) => id == game.currentPlayer).name);
+    if (game.currentPlayer) {
+      $("#turnState").html(players.find(({ id }) => id == game.currentPlayer).name + " is rolling:");
+    } else {
+      $("#turnState").html(players.sort((a, b) => b.score.total - a.score.total)[0].name + " wins!");
+    }
 
     if (game.currentPlayer == myId) {
       $(".score").on("click", ({ target }) => {
