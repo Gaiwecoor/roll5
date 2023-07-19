@@ -238,12 +238,12 @@ class Score {
     return (
       (this.k3 || 0) + (this.k4 || 0) + (this.fh || 0) +
       (this.ss || 0) + (this.ls || 0) +
-      (this.k5 || 0) + (this.ch || 0)
+      (this.k5 || 0) + (this.ch || 0) + (this.b5 || 0)
     )
   }
 
   get total() {
-    return this.sub1 + this.sub2 + this.bonus + this.b5;
+    return this.sub1 + this.sub2 + this.bonus;
   }
 }
 
