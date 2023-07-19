@@ -116,7 +116,7 @@ io.on("connection", (socket) => {
     const game = players.get(socket.id);
     const player = game.players.find(({ id }) => id == socket.id);
     player?.reset();
-    if (!game.currentPlayer) game.currentPlayer == socket.id;
+    if (!game.currentPlayer) game.currentPlayer = socket.id;
     io.to(game.id).emit("gameUpdate", game);
   });
 
