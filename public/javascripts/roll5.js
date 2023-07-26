@@ -208,7 +208,6 @@ $(document).ready(() => {
   });
 
   $("#verify").on("click", () => {
-    console.log("Verifying State...");
     socket.emit("verifyState");
   });
 
