@@ -172,9 +172,13 @@ $(document).ready(() => {
     }
 
     if (game.currentPlayer == myId) {
+      $("link[rel='icon']").attr("href", "favicon-dot.svg");
+
       $(".score").on("click", ({ target }) => {
         socket.emit("score", $(target)[0].dataset.box);
       });
+    } else {
+      $("link[rel='icon']").attr("href", "favicon.svg");
     }
 
     $("#playerName").val(game.players.find(({ id }) => id == myId).name);
