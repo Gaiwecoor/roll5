@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
-   sodipodi:docname="favicon-notification.svg"
+   sodipodi:docname="favicon-dot.svg"
    inkscape:export-filename="C:\Projects\roll5\public\images\d1.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -31,9 +31,9 @@
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:snap-object-midpoints="true"
-     inkscape:zoom="2.2318058"
-     inkscape:cx="-138.67694"
-     inkscape:cy="62.281405"
+     inkscape:zoom="6.3125001"
+     inkscape:cx="24.633663"
+     inkscape:cy="37.069307"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-1928"
@@ -179,10 +179,10 @@
        cy="8.4666672"
        r="1.0583334" />
     <circle
-       style="fill:#48bf91;fill-opacity:1;stroke-width:0.52916667;stroke:#a4dfc8;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path864"
-       cx="13.758333"
-       cy="13.758333"
+       cx="14.2875"
+       cy="14.2875"
        r="2.1166666" />
   </g>
 </svg>
