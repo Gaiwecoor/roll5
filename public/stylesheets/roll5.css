@@ -13,7 +13,12 @@
 .d4 { background-image: url(../images/d4.svg); }
 .d5 { background-image: url(../images/d5.svg); }
 .d6 { background-image: url(../images/d6.svg); }
-.locked { background-color: #48BF91; }
+.locked {
+  background-color: #48BF91;
+  height: 84px;
+  width: 84px;
+  margin: 22px;
+}
 
 button#roll, button#reset { background-color: #0076BE; color: white; }
 button.score, button#verify { background-color: #48BF91; }
