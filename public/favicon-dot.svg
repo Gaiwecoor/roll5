@@ -31,9 +31,9 @@
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:snap-object-midpoints="true"
-     inkscape:zoom="1.578125"
-     inkscape:cx="260.75247"
-     inkscape:cy="-41.188119"
+     inkscape:zoom="6.3125"
+     inkscape:cx="87.683168"
+     inkscape:cy="23.920792"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-1928"
@@ -171,10 +171,10 @@
        cy="8.4666672"
        r="1.0583334" />
     <circle
-       style="fill:#ff0000;stroke:#000000;stroke-width:1.05833;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#ff0000;stroke:#000000;stroke-width:1.5875;stroke-miterlimit:4;stroke-dasharray:none"
        id="path862"
-       cx="12.170835"
-       cy="12.170835"
-       r="4.2333336" />
+       cx="12.170834"
+       cy="12.170834"
+       r="3.96875" />
   </g>
 </svg>
